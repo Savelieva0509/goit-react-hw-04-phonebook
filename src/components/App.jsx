@@ -19,22 +19,28 @@ export class App extends Component {
     filter: '',
   };
 
-  componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
 
-    if (parsedContacts) {
-      this.setState({ contacts: parsedContacts });
-    } else {
-      this.setState(this.props.initialContacts);
-    }
-  }
+//   useEffect (() => {
+//     window.localStorage.setItem('contacts', JSON.stringify(contacts))
+// })
 
-  componentDidUpdate(_, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
-  }
+
+  // componentDidMount() {
+  //   const contacts = localStorage.getItem('contacts');
+  //   const parsedContacts = JSON.parse(contacts);
+
+  //   if (parsedContacts) {
+  //     this.setState({ contacts: parsedContacts });
+  //   } else {
+  //     this.setState(this.props.initialContacts);
+  //   }
+  // }
+
+  // componentDidUpdate(_, prevState) {
+  //   if (this.state.contacts !== prevState.contacts) {
+  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  //   }
+  // }
 
   deleteContact = contactId => {
     this.setState(prevState => ({

@@ -3,15 +3,15 @@ import { useState } from 'react';
 import css from './ContactForm.module.css';
 
 export default function ContactForm() {
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [number, setNumber] = useState('')
   
     const handleChange = event => {
-      setEmail(event.target.name)
+      setName(event.target.name)
       
       switch (event.target.name) {
         case 'email':
-          setEmail(event.target.value);
+          setName(event.target.value);
           break;
         
         case 'number':
@@ -23,6 +23,7 @@ export default function ContactForm() {
       }
   }
 
+
   return (
     <form onSubmit={this.handleSubmit} className={css.form}>
       <label for="name" className={css.form__label}>
@@ -32,7 +33,7 @@ export default function ContactForm() {
         className={css.form__input}
         type="text"
         onChange={handleChange}
-        value={email}
+        value={name}
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
