@@ -3,7 +3,7 @@ import css from './Filter.module.css';
 
 const Filter = ({ value, onChange }) => (
   <div className={css.filter}>
-    <label for="user-text" className={css.filter__label}>
+    <label htmlFor="user-text" className={css.filter__label}>
       Find contact by name
     </label>
 

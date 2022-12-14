@@ -23,10 +23,30 @@ export default function ContactForm() {
       }
   }
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    const { value } = event.currentTarget.name;
+    const { contacts, onSubmit } = this.props;
+
+    if (
+      contacts.find(elem => elem.name.toLowerCase() === value.toLowerCase())
+    ) {
+      return alert(`${value} is already in contacts`);
+    }
+    
+    reset();
+    onSubmit({name, number});
+  };
+
+  const reset = () => {
+    setName('');
+    setNumber('');
+  };
+
 
   return (
-    <form onSubmit={this.handleSubmit} className={css.form}>
-      <label for="name" className={css.form__label}>
+    <form onSubmit={handleSubmit} className={css.form}>
+      <label htmlFor="name" className={css.form__label}>
         Name
       </label>{' '}
       <input
@@ -39,7 +59,7 @@ export default function ContactForm() {
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
-      <label for="number" className={css.form__label}>
+      <label htmlFor="number" className={css.form__label}>
         Number{' '}
       </label>
       <input
