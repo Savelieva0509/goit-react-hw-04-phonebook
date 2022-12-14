@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import css from './ContactForm.module.css';
 
-export default function ContactForm() {
+export default function ContactForm({ contacts }, { onSubmit } ) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('')
   
@@ -26,7 +26,7 @@ export default function ContactForm() {
   const handleSubmit = event => {
     event.preventDefault();
     const { value } = event.currentTarget.name;
-    const { contacts, onSubmit } = this.props;
+    // const { contacts, onSubmit } = this.props;
 
     if (
       contacts.find(elem => elem.name.toLowerCase() === value.toLowerCase())
@@ -35,7 +35,7 @@ export default function ContactForm() {
     }
     
     reset();
-    onSubmit({name, number});
+    onSubmit({ name }, { number });
   };
 
   const reset = () => {
