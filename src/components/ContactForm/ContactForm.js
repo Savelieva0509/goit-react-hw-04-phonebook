@@ -2,26 +2,24 @@
 import { useState } from 'react';
 import css from './ContactForm.module.css';
 
-export default function ContactForm({ contacts , onSubmit } ) {
+export default function ContactForm({ contacts, onSubmit }) {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('')
-  
-    const handleChange = event => {
-      setName(event.target.name)
-      
-      switch (event.target.name) {
-        case 'email':
-          setName(event.target.value);
-          break;
-        
-        case 'number':
-          setNumber(event.target.value);
-          break;
-        
-        default:
-          return;
-      }
-  }
+  const [number, setNumber] = useState('');
+
+  const handleChange = event => {
+    switch (event.currentTarget.name) {
+      case 'name':
+        setName(event.currentTarget.value);
+        break;
+
+      case 'number':
+        setNumber(event.currentTarget.value);
+        break;
+
+      default:
+        return;
+    }
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -33,7 +31,7 @@ export default function ContactForm({ contacts , onSubmit } ) {
     ) {
       return alert(`${value} is already in contacts`);
     }
-    
+
     reset();
     onSubmit({ name, number });
   };
@@ -42,7 +40,6 @@ export default function ContactForm({ contacts , onSubmit } ) {
     setName('');
     setNumber('');
   };
-
 
   return (
     <form onSubmit={handleSubmit} className={css.form}>
