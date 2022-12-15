@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import css from './ContactForm.module.css';
 
-export default function ContactForm({ contacts }, { onSubmit } ) {
+export default function ContactForm({ contacts , onSubmit } ) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('')
   
