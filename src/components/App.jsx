@@ -22,6 +22,7 @@ export default function App() {
      window.localStorage.setItem('contacts', JSON.stringify(contacts))
    }, [contacts])
   
+  
   const addContact = ({ name, number }) => {
     const contact = {
       id: shortid.generate(),
@@ -29,19 +30,16 @@ export default function App() {
       number,
     };
 
-    setContacts(prevState => ({
-      contacts: [contact,...prevState],
-    }));
+    setContacts(prevState => ([contact,...prevState]));
   };
   
   const deleteContact = contactId => {
-    setContacts(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-    }));
+    setContacts(prevState => prevState.filter(contact => contact.id !== contactId)
+    );
   }
 
     const changeFilter = event => {
-      setFilter({ filter: event.currentTarget.value });
+      setFilter(event.currentTarget.value);
     };
 
     const getVisibleContact = () => {
